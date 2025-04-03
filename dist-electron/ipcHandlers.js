@@ -61,5 +61,8 @@ function initializeIpcHandlers(appState) {
             return { success: false, error: error.message };
         }
     });
+    electron_1.ipcMain.handle("quit-app", () => {
+        electron_1.app.quit();
+    });
 }
 //# sourceMappingURL=ipcHandlers.js.map
