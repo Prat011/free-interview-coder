@@ -1,4 +1,4 @@
-# Interview Coder
+# Free Interview Coder
 
 A desktop application to help with coding interviews.
 
