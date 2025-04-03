@@ -1,0 +1,110 @@
+{
+  "name": "interview-coder",
+  "version": "1.0.0",
+  "main": "./dist-electron/main.js",
+  "scripts": {
+    "clean": "rimraf dist dist-electron",
+    "dev": "vite",
+    "build": "npm run clean && tsc && vite build",
+    "preview": "vite preview",
+    "electron:dev": "tsc -p electron/tsconfig.json && electron .",
+    "app:dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && cross-env electron .\"",
+    "app:build": "npm run build && electron-builder",
+    "watch": "tsc -p electron/tsconfig.json --watch"
+  },
+  "build": {
+    "appId": "com.electron.interview-coder",
+    "productName": "Interview Coder",
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "assets/icons/mac/icon.icns"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "assets/icons/win/icon.ico"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "assets/icons/png/icon-256x256.png"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "ibttf",
+        "repo": "interview-coder-frontend"
+      }
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/color": "^4.2.0",
+    "@types/diff": "^6.0.0",
+    "@types/electron": "^1.4.38",
+    "@types/node": "^22.9.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "@types/screenshot-desktop": "^1.12.3",
+    "@types/uuid": "^9.0.8",
+    "@typescript-eslint/eslint-plugin": "^8.14.0",
+    "@typescript-eslint/parser": "^8.14.0",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.0",
+    "cross-env": "^7.0.3",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "electron-is-dev": "^3.0.1",
+    "postcss": "^8.4.49",
+    "rimraf": "^6.0.1",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "vite-plugin-electron": "^0.28.8",
+    "vite-plugin-electron-renderer": "^0.14.6",
+    "wait-on": "^8.0.1"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.2.1",
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-toast": "^1.2.2",
+    "axios": "^1.7.7",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "diff": "^7.0.0",
+    "form-data": "^4.0.1",
+    "lucide-react": "^0.460.0",
+    "react": "^18.3.1",
+    "react-code-blocks": "^0.1.6",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.3.0",
+    "react-query": "^3.39.3",
+    "react-syntax-highlighter": "^15.6.1",
+    "screenshot-desktop": "^1.15.0",
+    "sharp": "^0.33.5",
+    "tailwind-merge": "^2.5.4",
+    "tesseract.js": "^5.0.5",
+    "uuid": "^11.0.3"
+  }
+}
