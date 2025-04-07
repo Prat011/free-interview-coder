@@ -86,13 +86,22 @@ class WindowHelper {
         this.mainWindow = new electron_1.BrowserWindow(windowSettings);
         // this.mainWindow.webContents.openDevTools()
         this.mainWindow.setContentProtection(true);
-        this.mainWindow.setHiddenInMissionControl(true);
         if (process.platform === "darwin") {
             this.mainWindow.setVisibleOnAllWorkspaces(true, {
                 visibleOnFullScreen: true
             });
+            this.mainWindow.setHiddenInMissionControl(true);
             this.mainWindow.setAlwaysOnTop(true, "floating");
         }
+        if (process.platform === "linux") {
+            // Linux-specific optimizations for stealth overlays
+            if (this.mainWindow.setHasShadow) {
+                this.mainWindow.setHasShadow(false);
+            }
+            this.mainWindow.setFocusable(false);
+        }
+        this.mainWindow.setSkipTaskbar(true);
+        this.mainWindow.setAlwaysOnTop(true);
         this.mainWindow.loadURL(startUrl).catch((err) => {
             console.error("Failed to load URL:", err);
         });
