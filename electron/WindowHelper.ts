@@ -45,7 +45,7 @@ export class WindowHelper {
 
     // Ensure width doesn't exceed max allowed width and height is reasonable
     const newWidth = Math.min(width + 32, maxAllowedWidth)
-    const newHeight = Math.ceil(height)
+    const newHeight = Math.max(Math.ceil(height), 1200) // Ensure minimum height of 1200px
 
     // Center the window horizontally if it would go off screen
     const maxX = workArea.width - newWidth
@@ -77,7 +77,7 @@ export class WindowHelper {
     this.currentX = 0 // Start at the left
 
     const windowSettings: Electron.BrowserWindowConstructorOptions = {
-      height: 600,
+      height: 1200,
       minWidth: undefined,
       maxWidth: undefined,
       x: this.currentX,

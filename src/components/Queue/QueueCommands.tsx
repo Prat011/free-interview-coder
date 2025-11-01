@@ -1,14 +1,19 @@
 import React, { useState, useEffect, useRef } from "react"
 import { IoLogOutOutline } from "react-icons/io5"
+import { MessageCircle } from "lucide-react"
 
 interface QueueCommandsProps {
   onTooltipVisibilityChange: (visible: boolean, height: number) => void
   screenshots: Array<{ path: string; preview: string }>
+  setIsChatOpen: React.Dispatch<React.SetStateAction<boolean>>
+  isChatOpen: boolean
 }
 
 const QueueCommands: React.FC<QueueCommandsProps> = ({
   onTooltipVisibilityChange,
-  screenshots
+  screenshots,
+  setIsChatOpen,
+  isChatOpen
 }) => {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false)
   const tooltipRef = useRef<HTMLDivElement>(null)
@@ -30,7 +35,7 @@ const QueueCommands: React.FC<QueueCommandsProps> = ({
   }
 
   return (
-    <div className="pt-2 w-fit">
+    <div className="pt-2 w-fit pointer-events-auto">
       <div className="text-xs text-white/90 backdrop-blur-md bg-black/60 rounded-lg py-2 px-4 flex items-center justify-center gap-4">
         {/* Show/Hide */}
         <div className="flex items-center gap-2">
@@ -158,6 +163,20 @@ const QueueCommands: React.FC<QueueCommandsProps> = ({
 
         {/* Separator */}
         <div className="mx-2 h-4 w-px bg-white/20" />
+
+        {/* Chat Button */}
+        <button
+          className={`transition-colors hover:cursor-pointer flex items-center gap-1.5 ${
+            isChatOpen
+              ? "text-yellow-400 hover:text-yellow-300"
+              : "text-yellow-400/70 hover:text-yellow-400/90"
+          }`}
+          title={isChatOpen ? "Close Chat" : "Open Chat"}
+          onClick={() => setIsChatOpen(!isChatOpen)}
+        >
+          <MessageCircle className="w-4 h-4" />
+          <span className="text-[11px]">Chat</span>
+        </button>
 
         {/* Sign Out Button - Moved to end */}
         <button

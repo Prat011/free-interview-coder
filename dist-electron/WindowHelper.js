@@ -38,7 +38,7 @@ class WindowHelper {
         const maxAllowedWidth = Math.floor(workArea.width * (this.appState.getHasDebugged() ? 0.75 : 0.5));
         // Ensure width doesn't exceed max allowed width and height is reasonable
         const newWidth = Math.min(width + 32, maxAllowedWidth);
-        const newHeight = Math.ceil(height);
+        const newHeight = Math.max(Math.ceil(height), 1200); // Ensure minimum height of 1200px
         // Center the window horizontally if it would go off screen
         const maxX = workArea.width - newWidth;
         const newX = Math.min(Math.max(currentX, 0), maxX);
@@ -64,7 +64,7 @@ class WindowHelper {
         this.step = Math.floor(this.screenWidth / 10); // 10 steps
         this.currentX = 0; // Start at the left
         const windowSettings = {
-            height: 600,
+            height: 1200,
             minWidth: undefined,
             maxWidth: undefined,
             x: this.currentX,

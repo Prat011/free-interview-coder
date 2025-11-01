@@ -33,6 +33,7 @@ interface ElectronAPI {
   moveWindowLeft: () => Promise<void>
   moveWindowRight: () => Promise<void>
   quitApp: () => Promise<void>
+  getApiKey: () => Promise<string>
 }
 
 export const PROCESSING_EVENTS = {
@@ -51,6 +52,10 @@ export const PROCESSING_EVENTS = {
   DEBUG_SUCCESS: "debug-success",
   DEBUG_ERROR: "debug-error"
 } as const
+
+// Synchronously expose the GEMINI_API_KEY to the window object
+// This must be done before exposeInMainWorld
+;(window as any).GEMINI_API_KEY = process.env.GEMINI_API_KEY
 
 // Expose the Electron API to the renderer process
 contextBridge.exposeInMainWorld("electronAPI", {
@@ -163,5 +168,6 @@ contextBridge.exposeInMainWorld("electronAPI", {
   },
   moveWindowLeft: () => ipcRenderer.invoke("move-window-left"),
   moveWindowRight: () => ipcRenderer.invoke("move-window-right"),
-  quitApp: () => ipcRenderer.invoke("quit-app")
+  quitApp: () => ipcRenderer.invoke("quit-app"),
+  getApiKey: () => ipcRenderer.invoke("get-gemini-api-key")
 } as ElectronAPI)

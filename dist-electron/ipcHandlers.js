@@ -64,5 +64,8 @@ function initializeIpcHandlers(appState) {
     electron_1.ipcMain.handle("quit-app", () => {
         electron_1.app.quit();
     });
+    electron_1.ipcMain.handle("get-gemini-api-key", async () => {
+        return process.env.GEMINI_API_KEY || "";
+    });
 }
 //# sourceMappingURL=ipcHandlers.js.map

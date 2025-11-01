@@ -73,4 +73,8 @@ export function initializeIpcHandlers(appState: AppState): void {
   ipcMain.handle("quit-app", () => {
     app.quit()
   })
+
+  ipcMain.handle("get-gemini-api-key", async () => {
+    return process.env.GEMINI_API_KEY || ""
+  })
 }

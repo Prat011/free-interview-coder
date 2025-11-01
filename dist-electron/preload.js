@@ -16,6 +16,7 @@ exports.PROCESSING_EVENTS = {
     DEBUG_SUCCESS: "debug-success",
     DEBUG_ERROR: "debug-error"
 };
+window.GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 // Expose the Electron API to the renderer process
 electron_1.contextBridge.exposeInMainWorld("electronAPI", {
     updateContentDimensions: (dimensions) => electron_1.ipcRenderer.invoke("update-content-dimensions", dimensions),
@@ -108,6 +109,7 @@ electron_1.contextBridge.exposeInMainWorld("electronAPI", {
     },
     moveWindowLeft: () => electron_1.ipcRenderer.invoke("move-window-left"),
     moveWindowRight: () => electron_1.ipcRenderer.invoke("move-window-right"),
-    quitApp: () => electron_1.ipcRenderer.invoke("quit-app")
+    quitApp: () => electron_1.ipcRenderer.invoke("quit-app"),
+    getApiKey: () => electron_1.ipcRenderer.invoke("get-gemini-api-key")
 });
 //# sourceMappingURL=preload.js.map

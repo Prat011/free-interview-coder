@@ -21,6 +21,7 @@ interface ElectronAPI {
   moveWindowLeft: () => Promise<void>
   moveWindowRight: () => Promise<void>
   quitApp: () => Promise<void>
+  getApiKey: () => Promise<string>
 }
 
 interface Window {

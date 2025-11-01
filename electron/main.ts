@@ -4,6 +4,10 @@ import { WindowHelper } from "./WindowHelper"
 import { ScreenshotHelper } from "./ScreenshotHelper"
 import { ShortcutsHelper } from "./shortcuts"
 import { ProcessingHelper } from "./ProcessingHelper"
+import * as dotenv from "dotenv"
+
+// Load environment variables from .env file
+dotenv.config()
 
 export class AppState {
   private static instance: AppState | null = null
