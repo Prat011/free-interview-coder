@@ -13,7 +13,7 @@ A desktop application to help with coding interviews.
 
 1. Clone the repository:
 ```bash
-git clone [repository-url]
+git clone https://github.com/Prat011/free-interview-coder
 cd interview-coder
 ```
 
