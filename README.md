@@ -1,3 +1,7 @@
+# [Sponsored by Recall AI - API for desktop recording](https://docs.recall.ai/docs/desktop-sdk?utm_source=github&utm_medium=sponsorship&utm_campaign=prat011-free-interview-coder)
+If you’re looking for a hosted desktop recording API, consider checking out [Recall.ai](https://docs.recall.ai/docs/desktop-sdk?utm_source=github&utm_medium=sponsorship&utm_campaign=prat011-free-interview-coder), an API that records Zoom, Google Meet, Microsoft Teams, in-person meetings, and more.
+
+
 # Free Interview Coder
 
 A desktop application to help with coding interviews.
